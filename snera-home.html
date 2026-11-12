@@ -1,0 +1,2513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snera Store - Woven Heritage, Worn Forever</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       SNERA STORE - ODOO-SAFE EMBEDDABLE HOMEPAGE
+       All selectors prefixed with .snera-home
+       CSS Variables defined on .snera-home
+       ============================================ */
+
+    .snera-home {
+      --maroon: #7A1F2B;
+      --maroon-dark: #5D1820;
+      --maroon-light: #9B3A4A;
+      --gold: #C9A24B;
+      --gold-light: #D4B56B;
+      --gold-dark: #A8863A;
+      --ivory: #FBF6EE;
+      --ivory-dark: #E8E0D0;
+      --charcoal: #2B2B2B;
+      --charcoal-light: #404040;
+      --white: #FFFFFF;
+      --shadow-soft: 0 4px 24px rgba(0,0,0,0.08);
+      --shadow-medium: 0 8px 32px rgba(0,0,0,0.12);
+      --shadow-strong: 0 16px 48px rgba(0,0,0,0.16);
+      --shadow-gold: 0 8px 32px rgba(201, 162, 75, 0.3);
+      --radius: 16px;
+      --radius-sm: 8px;
+      --radius-lg: 24px;
+      --transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      --transition-fast: 0.2s ease;
+      --transition-spring: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      --container-max: 1280px;
+      --nav-height: 72px;
+      --show-navbar: 1; /* Set to 0 to hide navbar in Odoo */
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .snera-home *,
+      .snera-home *::before,
+      .snera-home *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    .snera-home {
+      font-family: 'Poppins', sans-serif;
+      background: var(--ivory);
+      color: var(--charcoal);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .snera-home h1,
+    .snera-home h2,
+    .snera-home h3,
+    .snera-home h4,
+    .snera-home h5,
+    .snera-home h6 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--charcoal);
+    }
+
+    .snera-home a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .snera-home img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .snera-home button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    .snera-home input {
+      font-family: inherit;
+    }
+
+    .snera-home ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* ============================================
+       NAVBAR
+       ============================================ */
+
+    .snera-home .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      background: rgba(251, 246, 238, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(122, 31, 43, 0.1);
+      transition: var(--transition);
+      opacity: var(--show-navbar);
+      visibility: var(--show-navbar);
+      pointer-events: var(--show-navbar);
+    }
+
+    .snera-home .nav.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      height: 0;
+      padding: 0 1.5rem;
+      border-bottom: none;
+    }
+
+    .snera-home .nav.scrolled {
+      background: rgba(251, 246, 238, 0.98);
+      border-bottom-color: rgba(122, 31, 43, 0.15);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .snera-home .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--maroon);
+      letter-spacing: 0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 101;
+    }
+
+    .snera-home .nav-logo::before {
+      content: '';
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--maroon) 0%, var(--gold) 100%);
+      border-radius: 50%;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E") center/contain;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E") center/contain;
+      animation: logo-shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes logo-shimmer {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(201, 162, 75, 0.4); }
+      50% { box-shadow: 0 0 0 10px rgba(201, 162, 75, 0); }
+    }
+
+    .snera-home .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .snera-home .nav-links a {
+      padding: 0.625rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--charcoal-light);
+      border-radius: var(--radius-sm);
+      transition: var(--transition-fast);
+      position: relative;
+    }
+
+    .snera-home .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0.375rem;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--maroon), var(--gold));
+      transform: translateX(-50%);
+      transition: width var(--transition);
+    }
+
+    .snera-home .nav-links a:hover,
+    .snera-home .nav-links a:focus {
+      color: var(--maroon);
+      background: rgba(122, 31, 43, 0.05);
+    }
+
+    .snera-home .nav-links a:hover::after,
+    .snera-home .nav-links a:focus::after {
+      width: 70%;
+    }
+
+    .snera-home .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .snera-home .nav-icon-btn {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: var(--charcoal-light);
+      transition: var(--transition-fast);
+      position: relative;
+    }
+
+    .snera-home .nav-icon-btn:hover,
+    .snera-home .nav-icon-btn:focus {
+      color: var(--maroon);
+      background: rgba(122, 31, 43, 0.05);
+    }
+
+    .snera-home .nav-icon-btn svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+    }
+
+    .snera-home .nav-cart-count {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      min-width: 18px;
+      height: 18px;
+      background: var(--maroon);
+      color: var(--ivory);
+      font-size: 0.625rem;
+      font-weight: 600;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 5px;
+    }
+
+    .snera-home .nav-menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      z-index: 101;
+    }
+
+    .snera-home .nav-menu-btn span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--charcoal);
+      margin: 5px 0;
+      transition: var(--transition-fast);
+      transform-origin: center;
+    }
+
+    .snera-home .nav-menu-btn.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .snera-home .nav-menu-btn.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .snera-home .nav-menu-btn.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* ============================================
+       HERO SECTION
+       ============================================ */
+
+    .snera-home .hero {
+      min-height: calc(100vh - var(--nav-height));
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 4rem 1.5rem;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      gap: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .snera-home .hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 700px;
+      height: 700px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse, rgba(122, 31, 43, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+      animation: hero-glow 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes hero-glow {
+      0% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+      100% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+    }
+
+    .snera-home .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 580px;
+    }
+
+    .snera-home .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.25rem;
+      background: rgba(122, 31, 43, 0.08);
+      border: 1px solid rgba(122, 31, 43, 0.15);
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--maroon);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fade-up 0.8s ease-out 0.2s forwards;
+    }
+
+    .snera-home .hero-badge span {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse-dot 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .snera-home .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fade-up 0.8s ease-out 0.4s forwards;
+    }
+
+    .snera-home .hero h1 .accent {
+      color: var(--maroon);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .snera-home .hero h1 .gold {
+      color: var(--gold);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .snera-home .hero p {
+      font-size: 1.125rem;
+      color: var(--charcoal-light);
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fade-up 0.8s ease-out 0.6s forwards;
+    }
+
+    .snera-home .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fade-up 0.8s ease-out 0.8s forwards;
+    }
+
+    .snera-home .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      text-decoration: none;
+      transition: var(--transition);
+      border: 2px solid transparent;
+      white-space: nowrap;
+    }
+
+    .snera-home .btn-primary {
+      background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+      color: var(--ivory);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .snera-home .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(122, 31, 43, 0.4);
+      background: linear-gradient(135deg, var(--maroon-dark) 0%, #4a1318 100%);
+    }
+
+    .snera-home .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .snera-home .btn-secondary {
+      background: transparent;
+      color: var(--maroon);
+      border-color: var(--maroon);
+    }
+
+    .snera-home .btn-secondary:hover {
+      background: var(--maroon);
+      color: var(--ivory);
+    }
+
+    .snera-home .btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      transition: transform var(--transition-fast);
+      flex-shrink: 0;
+    }
+
+    .snera-home .btn:hover svg {
+      transform: translateX(4px);
+    }
+
+    .snera-home .hero-visual {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .snera-home .saree-showcase {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      aspect-ratio: 3/4;
+    }
+
+    .snera-home .saree-layer {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-lg);
+      background-size: cover;
+      background-position: center;
+      box-shadow: var(--shadow-strong), var(--shadow-gold);
+      transition: var(--transition);
+    }
+
+    .snera-home .saree-layer.base {
+      z-index: 1;
+      opacity: 0.2;
+      filter: blur(30px) grayscale(1);
+      transform: scale(1.15);
+    }
+
+    .snera-home .saree-layer.main {
+      z-index: 3;
+    }
+
+    .snera-home .saree-layer.accent {
+      z-index: 2;
+      opacity: 0;
+      mix-blend-mode: soft-light;
+    }
+
+    .snera-home .saree-showcase:hover .saree-layer.main {
+      transform: scale(1.03) rotate(-0.5deg);
+    }
+
+    .snera-home .saree-showcase:hover .saree-layer.accent {
+      opacity: 0.3;
+    }
+
+    .snera-home .saree-drape {
+      position: absolute;
+      bottom: -15%;
+      left: 10%;
+      width: 80%;
+      height: 50%;
+      background: linear-gradient(180deg, transparent 0%, rgba(201, 162, 75, 0.15) 50%, rgba(122, 31, 43, 0.05) 100%);
+      border-radius: 50%;
+      filter: blur(50px);
+      animation: drape-flow 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes drape-flow {
+      0%, 100% { transform: translateX(-3%) scaleX(1); opacity: 0.5; }
+      50% { transform: translateX(3%) scaleX(1.1); opacity: 0.8; }
+    }
+
+    .snera-home .floating-elements {
+      position: absolute;
+      inset: -60px;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .snera-home .float-item {
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      background: var(--white);
+      border: 1px solid rgba(122, 31, 43, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-medium);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .snera-home .float-item svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--gold);
+    }
+
+    .snera-home .float-1 { top: 8%; left: -35px; animation-delay: 0s; }
+    .snera-home .float-2 { top: 30%; right: -45px; animation-delay: 1.5s; }
+    .snera-home .float-3 { bottom: 15%; left: -25px; animation-delay: 3s; }
+    .snera-home .float-4 { bottom: 8%; right: -35px; animation-delay: 4.5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-25px) rotate(6deg); }
+    }
+
+    /* ============================================
+       SECTION BASE STYLES
+       ============================================ */
+
+    .snera-home .section {
+      padding: 5rem 1.5rem;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .snera-home .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .snera-home .section-header.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .snera-home .section-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      position: relative;
+      padding-left: 2.5rem;
+    }
+
+    .snera-home .section-tag::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 1.75rem;
+      height: 2px;
+      background: linear-gradient(90deg, var(--maroon), var(--gold));
+    }
+
+    .snera-home .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    .snera-home .section-title .accent {
+      color: var(--maroon);
+      font-style: italic;
+    }
+
+    .snera-home .section-title .gold {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    /* ============================================
+       SHOP BY CATEGORY
+       ============================================ */
+
+    .snera-home .categories {
+      background: var(--white);
+    }
+
+    .snera-home .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .snera-home .category-card {
+      position: relative;
+      aspect-ratio: 4/5;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .snera-home .category-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(43, 43, 43, 0.8) 100%);
+      z-index: 1;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .snera-home .category-card:hover::before {
+      opacity: 1;
+    }
+
+    .snera-home .category-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .snera-home .category-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-spring);
+    }
+
+    .snera-home .category-card:hover .category-image {
+      transform: scale(1.08);
+    }
+
+    .snera-home .category-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      z-index: 2;
+      color: var(--ivory);
+    }
+
+    .snera-home .category-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .snera-home .category-count {
+      font-size: 0.875rem;
+      color: rgba(251, 246, 238, 0.7);
+      transform: translateY(20px);
+      opacity: 0;
+      transition: var(--transition);
+      transition-delay: 0.1s;
+    }
+
+    .snera-home .category-card:hover .category-name,
+    .snera-home .category-card:hover .category-count {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .snera-home .category-arrow {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--maroon);
+      transform: translateX(20px);
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 2;
+    }
+
+    .snera-home .category-card:hover .category-arrow {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .snera-home .category-arrow svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+    }
+
+    /* ============================================
+       FEATURED PRODUCTS
+       ============================================ */
+
+    .snera-home .featured {
+      background: var(--ivory);
+    }
+
+    .snera-home .featured-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .snera-home .featured-view-all {
+      color: var(--maroon);
+      font-weight: 500;
+      font-size: 0.9375rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      transition: var(--transition-fast);
+    }
+
+    .snera-home .featured-view-all:hover {
+      color: var(--gold);
+      gap: 0.625rem;
+    }
+
+    .snera-home .featured-view-all svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      transition: transform var(--transition-fast);
+    }
+
+    .snera-home .featured-view-all:hover svg {
+      transform: translateX(4px);
+    }
+
+    .snera-home .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .snera-home .product-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(122, 31, 43, 0.06);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .snera-home .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-strong);
+      border-color: rgba(201, 162, 75, 0.3);
+    }
+
+    .snera-home .product-image-wrapper {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+    }
+
+    .snera-home .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-spring);
+    }
+
+    .snera-home .product-card:hover .product-image {
+      transform: scale(1.08);
+    }
+
+    .snera-home .product-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.375rem 0.875rem;
+      background: var(--maroon);
+      color: var(--ivory);
+      font-size: 0.625rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      z-index: 2;
+    }
+
+    .snera-home .product-badge.sale {
+      background: var(--gold);
+      color: var(--maroon);
+    }
+
+    .snera-home .product-wishlist {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--charcoal-light);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: var(--transition);
+      z-index: 2;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .snera-home .product-card:hover .product-wishlist {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .snera-home .product-wishlist:hover {
+      color: var(--maroon);
+      background: var(--ivory);
+    }
+
+    .snera-home .product-wishlist svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+    }
+
+    .snera-home .product-content {
+      padding: 1.5rem;
+    }
+
+    .snera-home .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      transition: var(--transition-fast);
+    }
+
+    .snera-home .product-card:hover .product-name {
+      color: var(--maroon);
+    }
+
+    .snera-home .product-price {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--maroon);
+      margin-bottom: 1rem;
+    }
+
+    .snera-home .product-price .original {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--charcoal-light);
+      text-decoration: line-through;
+      margin-left: 0.75rem;
+    }
+
+    .snera-home .product-add-btn {
+      width: 100%;
+      justify-content: center;
+      padding: 0.875rem 1.5rem;
+      font-size: 0.875rem;
+      background: transparent;
+      color: var(--maroon);
+      border: 2px solid var(--maroon);
+    }
+
+    .snera-home .product-add-btn:hover {
+      background: var(--maroon);
+      color: var(--ivory);
+    }
+
+    /* ============================================
+       WHY SNERA (FEATURES)
+       ============================================ */
+
+    .snera-home .why-snera {
+      background: var(--white);
+    }
+
+    .snera-home .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .snera-home .feature-card {
+      padding: 2.5rem 2rem;
+      background: var(--ivory);
+      border: 1px solid rgba(122, 31, 43, 0.06);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .snera-home .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--maroon), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: var(--transition);
+    }
+
+    .snera-home .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .snera-home .feature-card:hover {
+      border-color: rgba(201, 162, 75, 0.3);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .snera-home .feature-icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, rgba(122, 31, 43, 0.08), rgba(201, 162, 75, 0.08));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .snera-home .feature-card:hover .feature-icon {
+      background: linear-gradient(135deg, var(--maroon), var(--gold));
+      transform: rotate(5deg) scale(1.1);
+    }
+
+    .snera-home .feature-card:hover .feature-icon svg {
+      stroke: var(--ivory);
+    }
+
+    .snera-home .feature-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--gold);
+      transition: var(--transition);
+    }
+
+    .snera-home .feature-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.375rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .snera-home .feature-desc {
+      font-size: 0.9375rem;
+      color: var(--charcoal-light);
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       IMAGE GALLERY / LOOKBOOK
+       ============================================ */
+
+    .snera-home .gallery {
+      background: var(--charcoal);
+    }
+
+    .snera-home .gallery .section-tag {
+      color: var(--gold);
+    }
+
+    .snera-home .gallery .section-title {
+      color: var(--ivory);
+    }
+
+    .snera-home .gallery .section-title .accent {
+      color: var(--gold);
+    }
+
+    .snera-home .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 300px);
+      gap: 1rem;
+    }
+
+    .snera-home .gallery-item {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .snera-home .gallery-item.large {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .snera-home .gallery-item.wide {
+      grid-column: span 2;
+    }
+
+    .snera-home .gallery-item.tall {
+      grid-row: span 2;
+    }
+
+    .snera-home .gallery-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-spring);
+    }
+
+    .snera-home .gallery-item:hover .gallery-image {
+      transform: scale(1.08);
+    }
+
+    .snera-home .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(43, 43, 43, 0.9) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      color: var(--ivory);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .snera-home .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .snera-home .gallery-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      transform: translateY(10px);
+      transition: var(--transition);
+      transition-delay: 0.1s;
+    }
+
+    .snera-home .gallery-item:hover .gallery-tag {
+      transform: translateY(0);
+    }
+
+    .snera-home .gallery-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      transform: translateY(10px);
+      transition: var(--transition);
+      transition-delay: 0.2s;
+    }
+
+    .snera-home .gallery-item:hover .gallery-title {
+      transform: translateY(0);
+    }
+
+    /* ============================================
+       TESTIMONIALS
+       ============================================ */
+
+    .snera-home .testimonials {
+      background: var(--ivory);
+    }
+
+    .snera-home .testimonials-slider {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding: 0 1.5rem;
+      padding: 1rem 0 2rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold) var(--ivory);
+    }
+
+    .snera-home .testimonials-slider::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .snera-home .testimonials-slider::-webkit-scrollbar-track {
+      background: var(--ivory-dark);
+      border-radius: 3px;
+    }
+
+    .snera-home .testimonials-slider::-webkit-scrollbar-thumb {
+      background: linear-gradient(90deg, var(--maroon), var(--gold));
+      border-radius: 3px;
+    }
+
+    .snera-home .testimonial-card {
+      flex: 0 0 360px;
+      scroll-snap-align: start;
+      background: var(--white);
+      border: 1px solid rgba(122, 31, 43, 0.06);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+
+    .snera-home .testimonial-card:hover {
+      border-color: rgba(201, 162, 75, 0.3);
+      box-shadow: var(--shadow-medium);
+      transform: translateY(-4px);
+    }
+
+    .snera-home .testimonial-stars {
+      display: flex;
+      gap: 0.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .snera-home .testimonial-stars svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--gold);
+      stroke: var(--gold);
+    }
+
+    .snera-home .testimonial-text {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--charcoal);
+      margin-bottom: 2rem;
+      flex: 1;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .snera-home .testimonial-text::before {
+      content: '"';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      color: var(--gold);
+      opacity: 0.3;
+      position: absolute;
+      left: 0;
+      top: -1.5rem;
+      line-height: 1;
+    }
+
+    .snera-home .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(122, 31, 43, 0.08);
+    }
+
+    .snera-home .author-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--maroon), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: var(--ivory);
+      font-size: 1.25rem;
+      font-family: 'Cormorant Garamond', serif;
+      flex-shrink: 0;
+    }
+
+    .snera-home .author-name {
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    .snera-home .author-location {
+      font-size: 0.875rem;
+      color: var(--charcoal-light);
+    }
+
+    /* ============================================
+       NEWSLETTER
+       ============================================ */
+
+    .snera-home .newsletter {
+      background: var(--white);
+    }
+
+    .snera-home .newsletter-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, rgba(122, 31, 43, 0.03) 0%, rgba(201, 162, 75, 0.03) 100%);
+      border: 1px solid rgba(122, 31, 43, 0.08);
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .snera-home .newsletter-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at center, rgba(201, 162, 75, 0.08) 0%, transparent 70%);
+      animation: newsletter-glow 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes newsletter-glow {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+      100% { transform: translate(-10%, -10%) scale(1.1); opacity: 1; }
+    }
+
+    .snera-home .newsletter-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .snera-home .newsletter-title {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .snera-home .newsletter-title .accent {
+      color: var(--maroon);
+      font-style: italic;
+    }
+
+    .snera-home .newsletter-desc {
+      color: var(--charcoal-light);
+      margin-bottom: 2rem;
+      font-size: 1.0625rem;
+    }
+
+    .snera-home .newsletter-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 420px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .snera-home .newsletter-input {
+      flex: 1;
+      min-width: 220px;
+      padding: 1rem 1.5rem;
+      background: var(--ivory);
+      border: 2px solid rgba(122, 31, 43, 0.1);
+      border-radius: 50px;
+      color: var(--charcoal);
+      font-size: 0.9375rem;
+      transition: var(--transition-fast);
+    }
+
+    .snera-home .newsletter-input:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(201, 162, 75, 0.15);
+    }
+
+    .snera-home .newsletter-input::placeholder {
+      color: var(--charcoal-light);
+    }
+
+    .snera-home .newsletter-btn {
+      padding: 1rem 2rem;
+      white-space: nowrap;
+    }
+
+    .snera-home .newsletter-note {
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      color: var(--charcoal-light);
+    }
+
+    .snera-home .newsletter-note a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+
+    .snera-home .footer {
+      background: var(--charcoal);
+      color: var(--ivory);
+      padding: 4rem 1.5rem 2rem;
+      max-width: var(--container-max);
+      margin: 0 auto;
+    }
+
+    .snera-home .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .snera-home .footer-brand .nav-logo {
+      margin-bottom: 1.25rem;
+      display: inline-flex;
+    }
+
+    .snera-home .footer-brand .nav-logo::before {
+      animation: none;
+      box-shadow: none;
+    }
+
+    .snera-home .footer-brand p {
+      color: rgba(251, 246, 238, 0.6);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      max-width: 300px;
+      margin-bottom: 1.5rem;
+    }
+
+    .snera-home .social-links {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .snera-home .social-link {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(251, 246, 238, 0.05);
+      border: 1px solid rgba(251, 246, 238, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(251, 246, 238, 0.6);
+      transition: var(--transition-fast);
+    }
+
+    .snera-home .social-link:hover {
+      background: linear-gradient(135deg, var(--maroon), var(--gold));
+      border-color: transparent;
+      color: var(--ivory);
+      transform: translateY(-3px);
+    }
+
+    .snera-home .social-link svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+    }
+
+    .snera-home .footer-col h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .snera-home .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+
+    .snera-home .footer-col a {
+      color: rgba(251, 246, 238, 0.7);
+      font-size: 0.9375rem;
+      transition: var(--transition-fast);
+    }
+
+    .snera-home .footer-col a:hover {
+      color: var(--gold);
+    }
+
+    .snera-home .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(251, 246, 238, 0.1);
+      font-size: 0.875rem;
+      color: rgba(251, 246, 238, 0.5);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .snera-home .footer-bottom a {
+      color: rgba(251, 246, 238, 0.5);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      transition: var(--transition-fast);
+    }
+
+    .snera-home .footer-bottom a:hover {
+      color: var(--gold);
+    }
+
+    /* ============================================
+       ANIMATIONS
+       ============================================ */
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .snera-home .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .snera-home .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .snera-home .reveal.delay-1 { transition-delay: 0.1s; }
+    .snera-home .reveal.delay-2 { transition-delay: 0.2s; }
+    .snera-home .reveal.delay-3 { transition-delay: 0.3s; }
+    .snera-home .reveal.delay-4 { transition-delay: 0.4s; }
+    .snera-home .reveal.delay-5 { transition-delay: 0.5s; }
+    .snera-home .reveal.delay-6 { transition-delay: 0.6s; }
+    .snera-home .reveal.delay-7 { transition-delay: 0.7s; }
+    .snera-home .reveal.delay-8 { transition-delay: 0.8s; }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+
+    @media (max-width: 1024px) {
+      .snera-home .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+        padding-top: 4rem;
+        min-height: auto;
+      }
+
+      .snera-home .hero-content {
+        max-width: 100%;
+      }
+
+      .snera-home .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .snera-home .hero-actions {
+        justify-content: center;
+      }
+
+      .snera-home .hero-badge {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .snera-home .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+
+      .snera-home .gallery-item.large {
+        grid-column: span 2;
+        grid-row: auto;
+      }
+
+      .snera-home .gallery-item.wide {
+        grid-column: span 2;
+      }
+
+      .snera-home .gallery-item.tall {
+        grid-row: auto;
+      }
+
+      .snera-home .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .snera-home .nav-links {
+        display: none;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background: var(--ivory);
+        flex-direction: column;
+        padding: 1.5rem;
+        border-bottom: 1px solid rgba(122, 31, 43, 0.1);
+        gap: 0.5rem;
+        box-shadow: var(--shadow-medium);
+      }
+
+      .snera-home .nav-links.open {
+        display: flex;
+      }
+
+      .snera-home .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      .snera-home .nav-menu-btn {
+        display: flex;
+      }
+
+      .snera-home .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .snera-home .products-grid {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+        margin: 0 auto;
+      }
+
+      .snera-home .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .snera-home .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .snera-home .gallery-item.large,
+      .snera-home .gallery-item.wide,
+      .snera-home .gallery-item.tall {
+        grid-column: auto;
+        grid-row: auto;
+        aspect-ratio: 4/3;
+      }
+
+      .snera-home .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .snera-home .footer-brand {
+        align-items: center;
+      }
+
+      .snera-home .footer-brand p {
+        max-width: none;
+      }
+
+      .snera-home .social-links {
+        justify-content: center;
+      }
+
+      .snera-home .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .snera-home .footer-bottom a {
+        margin: 0 0.75rem;
+      }
+
+      .snera-home .testimonial-card {
+        flex: 0 0 100%;
+        min-width: 280px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .snera-home .nav {
+        padding: 0 1rem;
+      }
+
+      .snera-home .hero {
+        padding: 3rem 1rem;
+      }
+
+      .snera-home .hero h1 {
+        font-size: 2.25rem;
+      }
+
+      .snera-home .section {
+        padding: 4rem 1rem;
+      }
+
+      .snera-home .categories-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .snera-home .product-card {
+        max-width: 320px;
+        margin: 0 auto;
+      }
+
+      .snera-home .newsletter-form {
+        flex-direction: column;
+      }
+
+      .snera-home .newsletter-btn {
+        width: 100%;
+      }
+
+      .snera-home .newsletter-input {
+        min-width: 100%;
+      }
+    }
+
+    /* ============================================
+       EMBEDDED MODE HELPERS
+       ============================================ */
+
+    .snera-home.embedded {
+      overflow-x: hidden;
+    }
+
+    .snera-home.embedded .nav {
+      position: sticky;
+    }
+  </style>
+</head>
+<body>
+  <div class="snera-home embedded" id="sneraHome">
+    <!-- NAVBAR -->
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+      <a href="/" class="nav-logo" aria-label="Snera Store Home">Snera Store</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <div class="nav-icons">
+        <a href="/search" class="nav-icon-btn" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </a>
+        <a href="/cart" class="nav-icon-btn" aria-label="Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="nav-cart-count" id="cartCount">0</span>
+        </a>
+        <a href="/profile" class="nav-icon-btn" aria-label="Profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+      </div>
+      <button class="nav-menu-btn" id="navMenuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <div class="hero-badge" aria-hidden="true"><span></span>New Season Collection</div>
+        <h1 id="hero-title"><span class="accent">Woven Heritage,</span><br><span class="gold">Worn Forever</span></h1>
+        <p>Discover handloom sarees crafted by master artisans across India. Each piece tells a story of tradition, woven with patience and worn with pride.</p>
+        <div class="hero-actions">
+          <a href="/shop" class="btn btn-primary">Shop Sarees<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="/about" class="btn btn-secondary">Our Story</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="saree-showcase" id="sareeShowcase">
+          <!-- REPLACE: Hero saree image - main product shot -->
+          <div class="saree-layer base" style="background-image: url('https://images.unsplash.com/photo-1610031103480-34c86b3e2e75?w=800&h=1000&fit=crop')"></div>
+          <div class="saree-layer main" style="background-image: url('https://images.unsplash.com/photo-1610031103480-34c86b3e2e75?w=800&h=1000&fit=crop')"></div>
+          <!-- REPLACE: Hero saree accent image - detail/texture shot -->
+          <div class="saree-layer accent" style="background-image: url('https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=800&h=1000&fit=crop')"></div>
+          <div class="saree-drape" aria-hidden="true"></div>
+          <div class="floating-elements" aria-hidden="true">
+            <div class="float-item float-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+            <div class="float-item float-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div class="float-item float-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div>
+            <div class="float-item float-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOP BY CATEGORY -->
+    <section class="section categories reveal" id="categories" aria-labelledby="categories-title">
+      <div class="section-header" id="categoriesHeader">
+        <span class="section-tag">Shop by Category</span>
+        <h2 class="section-title" id="categories-title">Explore <span class="accent">Handloom</span> Categories</h2>
+      </div>
+      <div class="categories-grid" id="categoriesGrid" role="list" aria-label="Saree categories">
+        <!-- Injected by JS -->
+      </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="section featured reveal" id="featured" aria-labelledby="featured-title">
+      <div class="section-header" id="featuredHeader">
+        <span class="section-tag">Featured Collection</span>
+        <h2 class="section-title" id="featured-title">Handpicked <span class="accent">Favorites</span></h2>
+      </div>
+      <div class="featured-header">
+        <div></div>
+        <a href="/shop" class="featured-view-all">View All<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="products-grid" id="productsGrid" role="list" aria-label="Featured products">
+        <!-- Injected by JS from PRODUCTS array -->
+      </div>
+    </section>
+
+    <!-- WHY SNERA -->
+    <section class="section why-snera reveal" id="why-snera" aria-labelledby="why-title">
+      <div class="section-header" id="whyHeader">
+        <span class="section-tag">Why Choose Us</span>
+        <h2 class="section-title" id="why-title">The <span class="accent">Snera</span> Difference</h2>
+      </div>
+      <div class="features-grid" id="featuresGrid" role="list" aria-label="Snera features">
+        <!-- Injected by JS -->
+      </div>
+    </section>
+
+    <!-- IMAGE GALLERY / LOOKBOOK -->
+    <section class="section gallery reveal" id="gallery" aria-labelledby="gallery-title">
+      <div class="section-header" id="galleryHeader">
+        <span class="section-tag">Lookbook</span>
+        <h2 class="section-title" id="gallery-title">Our <span class="gold">Lookbook</span></h2>
+      </div>
+      <div class="gallery-grid" id="galleryGrid" role="list" aria-label="Snera lookbook">
+        <!-- Injected by JS -->
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials reveal" id="testimonials" aria-labelledby="testimonials-title">
+      <div class="section-header" id="testimonialsHeader">
+        <span class="section-tag">Customer Stories</span>
+        <h2 class="section-title" id="testimonials-title">Loved by <span class="accent">Thousands</span></h2>
+      </div>
+      <div class="testimonials-slider" id="testimonialsSlider" role="list" aria-label="Customer testimonials">
+        <!-- Injected by JS -->
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="section newsletter reveal" id="newsletter" aria-labelledby="newsletter-title">
+      <div class="newsletter-wrapper">
+        <div class="newsletter-content">
+          <h2 class="newsletter-title" id="newsletter-title">Join the <span class="accent">Snera Circle</span></h2>
+          <p class="newsletter-desc">Be the first to access new collections, artisan stories, and exclusive offers. No spam, just timeless elegance.</p>
+          <form class="newsletter-form" id="newsletterForm" novalidate>
+            <input type="email" class="newsletter-input" placeholder="Enter your email" required aria-label="Email address" autocomplete="email">
+            <button type="submit" class="btn btn-primary newsletter-btn">Subscribe<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+          </form>
+          <p class="newsletter-note">By subscribing, you agree to our <a href="/privacy">Privacy Policy</a>. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer reveal" role="contentinfo">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo" aria-label="Snera Store Home">Snera Store</a>
+          <p>Weaving timeless elegance since 2015. Every saree carries the soul of its maker and the promise of enduring beauty.</p>
+          <div class="social-links">
+            <a href="https://instagram.com" class="social-link" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="https://facebook.com" class="social-link" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://pinterest.com" class="social-link" aria-label="Pinterest" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="17" x2="12" y2="12"/><line x1="12" y1="7" x2="12" y2="2"/><path d="M5 17h14v-2H5v2zM7 7h10l2 5H5l2-5z"/></svg></a>
+            <a href="https://youtube.com" class="social-link" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><polygon points="10 15 15 12 10 9 10 15"/></svg></a>
+          </div>
+        </div>
+        <nav class="footer-col" aria-label="Shop">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="/shop">All Sarees</a></li>
+            <li><a href="/shop?category=banarasi">Banarasi</a></li>
+            <li><a href="/shop?category=kanjivaram">Kanjivaram</a></li>
+            <li><a href="/shop?category=cotton">Cotton Handloom</a></li>
+            <li><a href="/shop?category=silk">Silk</a></li>
+            <li><a href="/shop?category=chanderi">Chanderi</a></li>
+            <li><a href="/shop?category=bandhani">Bandhani</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="About">
+          <h4>About</h4>
+          <ul>
+            <li><a href="/about">Our Story</a></li>
+            <li><a href="/artisans">Artisans</a></li>
+            <li><a href="/sustainability">Sustainability</a></li>
+            <li><a href="/care-guide">Care Guide</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/press">Press</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Support">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/shipping">Shipping Info</a></li>
+            <li><a href="/returns">Returns & Exchange</a></li>
+            <li><a href="/size-guide">Size Guide</a></li>
+            <li><a href="/faqs">FAQs</a></li>
+            <li><a href="/track-order">Track Order</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Snera Store. All rights reserved.</p>
+        <div>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/cookies">Cookie Policy</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // ============================================
+    // SNERA STORE - EMBEDDABLE HOMEPAGE
+    // All editable content at top for easy customization
+    // ============================================
+
+    (function() {
+      'use strict';
+
+      // ============================================
+      // EDITABLE CONFIGURATION - CHANGE THESE VALUES
+      // ============================================
+      const CONFIG = {
+        brand: 'Snera Store',
+        brandTagline: 'Woven Heritage, Worn Forever',
+        heroHeadline: 'Woven Heritage,<br>Worn Forever',
+        heroSubline: 'Discover handloom sarees crafted by master artisans across India. Each piece tells a story of tradition, woven with patience and worn with pride.',
+        heroCtaPrimary: { text: 'Shop Sarees', href: '/shop' },
+        heroCtaSecondary: { text: 'Our Story', href: '/about' },
+        showNavbar: true, // Set false to hide navbar in Odoo
+        currency: '₹',
+        // Image placeholders - REPLACE WITH YOUR OWN
+        images: {
+          heroMain: 'https://images.unsplash.com/photo-1610031103480-34c86b3e2e75?w=800&h=1000&fit=crop',
+          heroAccent: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=800&h=1000&fit=crop',
+          categories: {
+            banarasi: 'https://images.unsplash.com/photo-1597536724557-942a5a3db6f3?w=600&h=750&fit=crop',
+            kanjivaram: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=600&h=750&fit=crop',
+            cotton: 'https://images.unsplash.com/photo-1610031103480-34c86b3e2e75?w=600&h=750&fit=crop',
+            silk: 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=600&h=750&fit=crop',
+            chanderi: 'https://images.unsplash.com/photo-1595777493076-4c8e4b3a3b3b?w=600&h=750&fit=crop',
+            bandhani: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=600&h=750&fit=crop'
+          },
+          gallery: [
+            'https://images.unsplash.com/photo-1597536724557-942a5a3db6f3?w=800&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=600&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=600&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1595777493076-4c8e4b3a3b3b?w=600&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1610031103480-34c86b3e2e75?w=800&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=600&h=800&fit=crop'
+          ]
+        }
+      };
+
+      // ============================================
+      // PRODUCTS DATA - REPLACE WITH SUPABASE FETCH LATER
+      // ============================================
+      const PRODUCTS = [
+        {
+          id: 'prod-001',
+          name: 'Royal Banarasi Brocade',
+          category: 'Banarasi',
+          price: 24999,
+          originalPrice: 29999,
+          badge: 'Bestseller',
+          badgeType: 'sale', // 'sale' or 'new'
+          image: 'https://images.unsplash.com/photo-1597536724557-942a5a3db6f3?w=480&h=640&fit=crop',
+          href: '/shop-detail?id=prod-001'
+        },
+        {
+          id: 'prod-002',
+          name: 'Kanjivaram Temple Border',
+          category: 'Kanjivaram',
+          price: 18500,
+          originalPrice: null,
+          badge: 'Handloom',
+          badgeType: 'new',
+          image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=480&h=640&fit=crop',
+          href: '/shop-detail?id=prod-002'
+        },
+        {
+          id: 'prod-003',
+          name: 'Chanderi Cotton-Silk',
+          category: 'Chanderi',
+          price: 8999,
+          originalPrice: 11999,
+          badge: 'Sale',
+          badgeType: 'sale',
+          image: 'https://images.unsplash.com/photo-1610031103480-34c86b3e2e75?w=480&h=640&fit=crop',
+          href: '/shop-detail?id=prod-003'
+        },
+        {
+          id: 'prod-004',
+          name: 'Pure Mulberry Silk Saree',
+          category: 'Silk',
+          price: 15999,
+          originalPrice: null,
+          badge: 'Classic',
+          badgeType: 'new',
+          image: 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=480&h=640&fit=crop',
+          href: '/shop-detail?id=prod-004'
+        },
+        {
+          id: 'prod-005',
+          name: 'Floral Organza Saree',
+          category: 'Organza',
+          price: 12500,
+          originalPrice: null,
+          badge: 'New Arrival',
+          badgeType: 'new',
+          image: 'https://images.unsplash.com/photo-1595777493076-4c8e4b3a3b3b?w=480&h=640&fit=crop',
+          href: '/shop-detail?id=prod-005'
+        },
+        {
+          id: 'prod-006',
+          name: 'Bandhani Tie-Dye Cotton',
+          category: 'Bandhani',
+          price: 6500,
+          originalPrice: 8500,
+          badge: 'Festive',
+          badgeType: 'sale',
+          image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=480&h=640&fit=crop',
+          href: '/shop-detail?id=prod-006'
+        },
+        {
+          id: 'prod-007',
+          name: 'Patola Double Ikat Silk',
+          category: 'Patola',
+          price: 45000,
+          originalPrice: null,
+          badge: 'Collector\'s Piece',
+          badgeType: 'new',
+          image: 'https://images.unsplash.com/photo-1597536724557-942a5a3db6f3?w=480&h=640&fit=crop',
+          href: '/shop-detail?id=prod-007'
+        },
+        {
+          id: 'prod-008',
+          name: 'Mysore Silk Minimalist',
+          category: 'Mysore',
+          price: 11500,
+          originalPrice: null,
+          badge: 'Daily Luxury',
+          badgeType: 'new',
+          image: 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=480&h=640&fit=crop',
+          href: '/shop-detail?id=prod-008'
+        }
+      ];
+
+      // ============================================
+      // CATEGORIES DATA
+      // ============================================
+      const CATEGORIES = [
+        { id: 'banarasi', name: 'Banarasi', count: '42 Sarees', image: CONFIG.images.categories.banarasi },
+        { id: 'kanjivaram', name: 'Kanjivaram', count: '38 Sarees', image: CONFIG.images.categories.kanjivaram },
+        { id: 'cotton', name: 'Cotton Handloom', count: '56 Sarees', image: CONFIG.images.categories.cotton },
+        { id: 'silk', name: 'Silk', count: '64 Sarees', image: CONFIG.images.categories.silk },
+        { id: 'chanderi', name: 'Chanderi', count: '28 Sarees', image: CONFIG.images.categories.chanderi },
+        { id: 'bandhani', name: 'Bandhani', count: '34 Sarees', image: CONFIG.images.categories.bandhani }
+      ];
+
+      // ============================================
+      // FEATURES DATA
+      // ============================================
+      const FEATURES = [
+        {
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>',
+          title: 'Authentic Handloom',
+          desc: 'Every saree woven on traditional handlooms by artisans whose families have practiced this craft for generations. No two pieces are exactly alike.'
+        },
+        {
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>',
+          title: 'Direct from Weavers',
+          desc: 'We work directly with artisan communities across India, ensuring fair wages and preserving cultural heritage. Your purchase supports livelihoods.'
+        },
+        {
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>',
+          title: 'Free Shipping Across India',
+          desc: 'Complimentary express shipping on all orders within India. No minimum order value, no hidden charges. Delivered with care to your doorstep.'
+        },
+        {
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/><path d="M23 10v6a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V10"/></svg>',
+          title: 'Easy Returns',
+          desc: '15-day hassle-free returns and exchange. If you\'re not completely in love with your saree, we\'ll make it right. Conditions apply.'
+        }
+      ];
+
+      // ============================================
+      // GALLERY DATA
+      // ============================================
+      const GALLERY = [
+        { image: CONFIG.images.gallery[0], tag: 'Bridal Collection', title: 'Royal Banarasi', large: true },
+        { image: CONFIG.images.gallery[1], tag: 'Traditional', title: 'Kanjivaram Silk' },
+        { image: CONFIG.images.gallery[2], tag: 'Contemporary', title: 'Floral Organza' },
+        { image: CONFIG.images.gallery[3], tag: 'Heritage', title: 'Patola Ikat' },
+        { image: CONFIG.images.gallery[4], tag: 'Festive', title: 'Bandhani Joy', wide: true },
+        { image: CONFIG.images.gallery[5], tag: 'Daily Luxury', title: 'Mysore Silk', tall: true }
+      ];
+
+      // ============================================
+      // TESTIMONIALS DATA
+      // ============================================
+      const TESTIMONIALS = [
+        {
+          text: "The Banarasi silk saree I ordered for my daughter's wedding is absolutely breathtaking. The gold zari work catches light beautifully. It's truly an heirloom piece that will be treasured for generations.",
+          author: "Priya Sharma",
+          location: "Mumbai",
+          avatar: "PS",
+          stars: 5
+        },
+        {
+          text: "Finally found a store that values authentic craftsmanship. My Chanderi saree arrived perfectly packaged with a handwritten note from the artisan. The quality and care are unmatched.",
+          author: "Anita Desai",
+          location: "Bangalore",
+          avatar: "AD",
+          stars: 5
+        },
+        {
+          text: "The Patola double ikat is a masterpiece. Knowing it took 6 months to create makes it so special. Worth every penny for such rare artistry. The colors are even more vibrant in person.",
+          author: "Meera Patel",
+          location: "Ahmedabad",
+          avatar: "MP",
+          stars: 5
+        },
+        {
+          text: "Customer service is exceptional. They helped me choose the perfect Kanjivaram for my mother's 60th birthday. She cried when she saw it. Thank you for making moments memorable.",
+          author: "Rohit Kumar",
+          location: "Delhi",
+          avatar: "RK",
+          stars: 5
+        },
+        {
+          text: "Lightweight organza with 3D floral embroidery - so unique! Wore it to a summer wedding and got endless compliments. The pre-draped option is genius for someone who struggles with draping.",
+          author: "Sneha Reddy",
+          location: "Hyderabad",
+          avatar: "SR",
+          stars: 5
+        },
+        {
+          text: "Been buying from Snera Store for 5 years. Quality never disappoints. Their Bandhani collection for festivals is my absolute favorite. Fast shipping and beautiful packaging every time.",
+          author: "Kavya Nair",
+          location: "Kochi",
+          avatar: "KN",
+          stars: 5
+        }
+      ];
+
+      // ============================================
+      // UTILITIES
+      // ============================================
+      const $ = (sel, ctx = document) => ctx.querySelector(sel);
+      const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+      const root = $('#sneraHome');
+
+      function createElement(html) {
+        const template = document.createElement('template');
+        template.innerHTML = html.trim();
+        return template.content.firstElementChild;
+      }
+
+      function formatPrice(price) {
+        return CONFIG.currency + price.toLocaleString('en-IN');
+      }
+
+      // ============================================
+      // NAVBAR TOGGLE
+      // ============================================
+      function initNavbarToggle() {
+        if (!CONFIG.showNavbar) {
+          root.querySelector('.nav').classList.add('hidden');
+        }
+      }
+
+      // ============================================
+      // RENDER CATEGORIES
+      // ============================================
+      function renderCategories() {
+        const grid = $('#categoriesGrid');
+        if (!grid) return;
+
+        grid.innerHTML = CATEGORIES.map((cat, i) => `
+          <article class="category-card reveal delay-${(i % 6) + 1}" role="listitem" data-category="${cat.id}">
+            <img class="category-image" src="${cat.image}" alt="${cat.name} sarees" loading="lazy">
+            <div class="category-overlay">
+              <h3 class="category-name">${cat.name}</h3>
+              <span class="category-count">${cat.count}</span>
+            </div>
+            <a href="/shop?category=${cat.id}" class="category-arrow" aria-label="Shop ${cat.name}">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+        `).join('');
+
+        observeReveal($$('.category-card', grid));
+      }
+
+      // ============================================
+      // RENDER PRODUCTS
+      // ============================================
+      function renderProducts() {
+        const grid = $('#productsGrid');
+        if (!grid) return;
+
+        grid.innerHTML = PRODUCTS.map((product, i) => `
+          <article class="product-card reveal delay-${(i % 8) + 1}" role="listitem" data-id="${product.id}">
+            <div class="product-image-wrapper">
+              <img class="product-image" src="${product.image}" alt="${product.name}" loading="lazy">
+              ${product.badge ? `<span class="product-badge ${product.badgeType}">${product.badge}</span>` : ''}
+              <button class="product-wishlist" aria-label="Add to wishlist">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+            </div>
+            <div class="product-content">
+              <h3 class="product-name">${product.name}</h3>
+              <div class="product-price">
+                ${formatPrice(product.price)}
+                ${product.originalPrice ? `<span class="original">${formatPrice(product.originalPrice)}</span>` : ''}
+              </div>
+              <a href="${product.href}" class="btn btn-primary product-add-btn">Add to Cart<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+            </div>
+          </article>
+        `).join('');
+
+        observeReveal($$('.product-card', grid));
+      }
+
+      // ============================================
+      // RENDER FEATURES
+      // ============================================
+      function renderFeatures() {
+        const grid = $('#featuresGrid');
+        if (!grid) return;
+
+        grid.innerHTML = FEATURES.map((feature, i) => `
+          <article class="feature-card reveal delay-${(i % 4) + 1}" role="listitem">
+            <div class="feature-icon">${feature.icon}</div>
+            <h3 class="feature-title">${feature.title}</h3>
+            <p class="feature-desc">${feature.desc}</p>
+          </article>
+        `).join('');
+
+        observeReveal($$('.feature-card', grid));
+      }
+
+      // ============================================
+      // RENDER GALLERY
+      // ============================================
+      function renderGallery() {
+        const grid = $('#galleryGrid');
+        if (!grid) return;
+
+        grid.innerHTML = GALLERY.map((item, i) => `
+          <article class="gallery-item${item.large ? ' large' : ''}${item.wide ? ' wide' : ''}${item.tall ? ' tall' : ''} reveal delay-${(i % 6) + 1}" role="listitem">
+            <img class="gallery-image" src="${item.image}" alt="${item.title}" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">${item.tag}</span>
+              <h3 class="gallery-title">${item.title}</h3>
+            </div>
+          </article>
+        `).join('');
+
+        observeReveal($$('.gallery-item', grid));
+      }
+
+      // ============================================
+      // RENDER TESTIMONIALS
+      // ============================================
+      function renderTestimonials() {
+        const slider = $('#testimonialsSlider');
+        if (!slider) return;
+
+        slider.innerHTML = TESTIMONIALS.map(item => `
+          <article class="testimonial-card" role="listitem">
+            <div class="testimonial-stars" aria-label="${item.stars} out of 5 stars">
+              ${Array.from({ length: item.stars }, () => `<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`).join('')}
+            </div>
+            <p class="testimonial-text">${item.text}</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">${item.avatar}</div>
+              <div>
+                <div class="author-name">${item.author}</div>
+                <div class="author-location">${item.location}</div>
+              </div>
+            </div>
+          </article>
+        `).join('');
+      }
+
+      // ============================================
+      // SCROLL REVEAL (IntersectionObserver)
+      // ============================================
+      function observeReveal(elements) {
+        if (!elements.length) return;
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        elements.forEach(el => observer.observe(el));
+      }
+
+      function initScrollReveal() {
+        observeReveal($$('.reveal'));
+        observeReveal($$('.section-header'));
+      }
+
+      // ============================================
+      // NAVBAR SCROLL EFFECT
+      // ============================================
+      function initNavScroll() {
+        const nav = $('#nav');
+        if (!nav) return;
+
+        window.addEventListener('scroll', () => {
+          nav.classList.toggle('scrolled', window.scrollY > 20);
+        }, { passive: true });
+      }
+
+      // ============================================
+      // MOBILE MENU TOGGLE
+      // ============================================
+      function initMobileMenu() {
+        const menuBtn = $('#navMenuBtn');
+        const navLinks = $('#navLinks');
+        if (!menuBtn || !navLinks) return;
+
+        menuBtn.addEventListener('click', () => {
+          const open = navLinks.classList.toggle('open');
+          menuBtn.classList.toggle('open', open);
+          menuBtn.setAttribute('aria-expanded', open);
+        });
+
+        $$('a', navLinks).forEach(link => {
+          link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            menuBtn.classList.remove('open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // ============================================
+      // SAREE SHOWCASE PARALLAX
+      // ============================================
+      function initSareeShowcase() {
+        const showcase = $('#sareeShowcase');
+        if (!showcase) return;
+
+        let mouseX = 0, mouseY = 0;
+        let currentX = 0, currentY = 0;
+
+        function animate() {
+          currentX += (mouseX - currentX) * 0.05;
+          currentY += (mouseY - currentY) * 0.05;
+
+          const mainLayer = $('.saree-layer.main', showcase);
+          if (mainLayer) {
+            mainLayer.style.transform = `translate(${currentX * 15}px, ${currentY * 15}px) rotate(${currentX * 1}deg)`;
+          }
+
+          requestAnimationFrame(animate);
+        }
+
+        showcase.addEventListener('mousemove', e => {
+          const rect = showcase.getBoundingClientRect();
+          mouseX = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+          mouseY = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+        });
+
+        showcase.addEventListener('mouseleave', () => {
+          mouseX = 0; mouseY = 0;
+        });
+
+        animate();
+      }
+
+      // ============================================
+      // HERO PARALLAX
+      // ============================================
+      function initHeroParallax() {
+        const baseLayer = $('.saree-layer.base');
+        const accentLayer = $('.saree-layer.accent');
+        if (!baseLayer && !accentLayer) return;
+
+        function update() {
+          const scrollY = window.scrollY;
+          if (baseLayer) baseLayer.style.transform = `translateY(${scrollY * 0.15}px) scale(1.15)`;
+          if (accentLayer) accentLayer.style.transform = `translateY(${scrollY * 0.08}px)`;
+        }
+
+        window.addEventListener('scroll', update, { passive: true });
+      }
+
+      // ============================================
+      // CARD TILT EFFECT
+      // ============================================
+      function initCardTilt() {
+        $$('.product-card, .feature-card, .category-card').forEach(card => {
+          card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            card.style.transform = `perspective(1000px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg) translateY(-8px)`;
+          });
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+          });
+        });
+      }
+
+      // ============================================
+      // NEWSLETTER FORM
+      // ============================================
+      function initNewsletter() {
+        const form = $('#newsletterForm');
+        if (!form) return;
+
+        form.addEventListener('submit', async e => {
+          e.preventDefault();
+          const input = $('.newsletter-input', form);
+          const btn = $('.newsletter-btn', form);
+          const email = input.value.trim();
+
+          if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            input.style.borderColor = '#e74c3c';
+            setTimeout(() => input.style.borderColor = '', 2000);
+            return;
+          }
+
+          const originalHTML = btn.innerHTML;
+          btn.innerHTML = '<svg class="spinner" viewBox="0 0 24 24" style="width:20px;height:20px;animation:spin 1s linear infinite"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="31.4 31.4" stroke-linecap="round"/></svg>';
+          btn.disabled = true;
+
+          // Simulate API call - REPLACE WITH ACTUAL API
+          await new Promise(r => setTimeout(r, 1500));
+
+          btn.innerHTML = 'Subscribed!<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>';
+          btn.style.background = '#27ae60';
+          btn.style.borderColor = '#27ae60';
+
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.style.background = '';
+            btn.style.borderColor = '';
+            btn.disabled = false;
+            input.value = '';
+          }, 3000);
+        });
+
+        // Add spinner animation
+        const style = document.createElement('style');
+        style.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+        document.head.appendChild(style);
+      }
+
+      // ============================================
+      // CART COUNT (placeholder - connect to your cart system)
+      // ============================================
+      function initCartCount() {
+        // REPLACE: Connect to your cart state management
+        // Example: fetch from localStorage, Supabase, or global cart object
+        const countEl = $('#cartCount');
+        if (countEl) {
+          // Demo: shows 0, replace with actual count
+          countEl.textContent = '0';
+        }
+      }
+
+      // ============================================
+      // ODOO EMBED COMMUNICATION
+      // ============================================
+      function initOdooEmbed() {
+        // Report height to parent iframe
+        function reportHeight() {
+          const height = document.body.scrollHeight;
+          window.parent?.postMessage({ type: 'snera-store:height', height }, '*');
+        }
+
+        // Listen for resize requests from parent
+        window.addEventListener('message', e => {
+          if (e.data?.type === 'snera-store:resize') {
+            window.dispatchEvent(new Event('resize'));
+          }
+        });
+
+        reportHeight();
+        setInterval(reportHeight, 1000);
+        new MutationObserver(reportHeight).observe(document.body, { childList: true, subtree: true });
+      }
+
+      // ============================================
+      // INITIALIZATION
+      // ============================================
+      function init() {
+        // Navbar
+        initNavbarToggle();
+        initNavScroll();
+        initMobileMenu();
+
+        // Render sections
+        renderCategories();
+        renderProducts();
+        renderFeatures();
+        renderGallery();
+        renderTestimonials();
+
+        // Interactions
+        initScrollReveal();
+        initSareeShowcase();
+        initHeroParallax();
+        initCardTilt();
+        initNewsletter();
+        initCartCount();
+        initOdooEmbed();
+
+        // Expose for external control
+        window.SneraStore = {
+          scrollTo: (id) => { const el = $(id); if (el) el.scrollIntoView({ behavior: 'smooth' }); },
+          refresh: () => {
+            renderCategories();
+            renderProducts();
+            renderFeatures();
+            renderGallery();
+            renderTestimonials();
+            initScrollReveal();
+            initCardTilt();
+          },
+          updateProducts: (newProducts) => {
+            // Call this after fetching from Supabase
+            // PRODUCTS.length = 0; PRODUCTS.push(...newProducts);
+            // renderProducts();
+          },
+          updateConfig: (newConfig) => {
+            Object.assign(CONFIG, newConfig);
+            // Re-render affected sections
+          }
+        };
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+</body>
+</html>
